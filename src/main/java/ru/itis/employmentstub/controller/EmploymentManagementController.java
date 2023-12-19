@@ -9,6 +9,7 @@ import ru.itis.employmentstub.model.dto.EmploymentDocResponseDto;
 import ru.itis.employmentstub.model.enums.RoleWrapper;
 import ru.itis.employmentstub.model.enums.StatusWrapper;
 import ru.itis.employmentstub.repository.DocumentRepository;
+import ru.itis.employmentstub.repository.EducationRepository;
 import ru.itis.employmentstub.repository.UserRepository;
 import ru.itis.employmentstub.repository.VacancyRepository;
 
@@ -21,6 +22,7 @@ public class EmploymentManagementController {
     private final VacancyRepository vacancyRepository;
     private final DocumentRepository documentRepository;
     private final UserRepository userRepository;
+    private final EducationRepository educationRepository;
 
     @PostMapping("/api/v1/register")
     public ResponseEntity<UserDB> createUser(@RequestBody UserDB userDB) {
@@ -71,6 +73,8 @@ public class EmploymentManagementController {
                 .status(respond.getStatus())
                 .responseDate(respond.getResponseDate())
                 .recipient(respond.getRecipient())
+                .userData(respond.getUser())
+                .educations(educationRepository.findAllByUserData(respond.getUser()))
                 .build());
     }
 
@@ -86,6 +90,8 @@ public class EmploymentManagementController {
                 .status(respond.getStatus())
                 .responseDate(respond.getResponseDate())
                 .recipient(respond.getRecipient())
+                .userData(respond.getUser())
+                .educations(educationRepository.findAllByUserData(respond.getUser()))
                 .build());
     }
 
@@ -100,6 +106,7 @@ public class EmploymentManagementController {
                 .responseDate(respond.getResponseDate())
                 .recipient(respond.getRecipient())
                 .userData(respond.getUser())
+                .educations(educationRepository.findAllByUserData(respond.getUser()))
                 .build()).toList();
         return ResponseEntity.ok(result);
     }
