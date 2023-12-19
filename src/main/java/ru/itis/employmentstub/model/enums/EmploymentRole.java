@@ -1,7 +1,9 @@
 package ru.itis.employmentstub.model.enums;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonValue;
 
+@JsonFormat(shape = JsonFormat.Shape.OBJECT)
 public enum EmploymentRole {
     ABIT, SCHOOL, GUEST, SEEKER, ATTEND, STUD, EMPL, ASPIR, ABITUR, SUPERVISOR, PERSONNEL_DEPARTMENT, LABOR_PROTECTION_DEPARTMENT, ACCOUNTING;
 

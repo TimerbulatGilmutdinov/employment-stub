@@ -1,15 +1,12 @@
 package ru.itis.employmentstub.controller;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import ru.itis.employmentstub.model.UserDB;
 import ru.itis.employmentstub.model.Vacancy;
 import ru.itis.employmentstub.model.dto.EmploymentDocResponseDto;
-import ru.itis.employmentstub.model.enums.EmploymentRole;
 import ru.itis.employmentstub.model.enums.RoleWrapper;
-import ru.itis.employmentstub.model.enums.Status;
 import ru.itis.employmentstub.model.enums.StatusWrapper;
 import ru.itis.employmentstub.repository.DocumentRepository;
 import ru.itis.employmentstub.repository.UserRepository;

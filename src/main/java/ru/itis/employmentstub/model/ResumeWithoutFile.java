@@ -1,6 +1,5 @@
 package ru.itis.employmentstub.model;
 
-import jakarta.persistence.*;
 import lombok.*;
 import ru.itis.employmentstub.model.enums.Sex;
 
