@@ -49,6 +49,7 @@ public class EmploymentManagementController {
                 .status(respond.getStatus())
                 .responseDate(respond.getResponseDate())
                 .recipient(respond.getRecipient())
+                .userData(respond.getUser())
                 .build());
     }
 
@@ -98,6 +99,7 @@ public class EmploymentManagementController {
                 .status(respond.getStatus())
                 .responseDate(respond.getResponseDate())
                 .recipient(respond.getRecipient())
+                .userData(respond.getUser())
                 .build()).toList();
         return ResponseEntity.ok(result);
     }
