@@ -7,5 +7,5 @@ import ru.itis.employmentstub.model.UserDB;
 import java.util.List;
 
 public interface EducationRepository extends JpaRepository<Education,Long> {
-    List<Education> findAllByUserDB(UserDB userDB);
+    List<Education> findAllByUserData(UserDB userDB);
 }

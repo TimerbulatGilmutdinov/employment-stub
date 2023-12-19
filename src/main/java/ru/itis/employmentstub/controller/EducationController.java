@@ -29,7 +29,7 @@ public class EducationController {
         String token = headerUtil.getToken(request);
         String email = jwtUtil.parseToken(token).getSub();
         UserDB userDB = userRepository.findByEmail(email);
-        return ResponseEntity.ok(educationRepository.findAllByUserDB(userDB));
+        return ResponseEntity.ok(educationRepository.findAllByUserData(userDB));
     }
 
     @PostMapping("/api/v1/users/me/education")
