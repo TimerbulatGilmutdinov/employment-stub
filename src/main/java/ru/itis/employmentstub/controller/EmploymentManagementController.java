@@ -41,10 +41,10 @@ public class EmploymentManagementController {
     }
 
 
-    @GetMapping("/api/v1/vacancy/{vacancyId}/responds/{respondId}")
-    public ResponseEntity<EmploymentDocResponseDto> getVacancyRespond(@PathVariable("vacancyId") Long vacancyId, @PathVariable("respondId") Long respondId) {
-        var vacancy = vacancyRepository.findById(vacancyId).orElseThrow(() -> new NoSuchElementException("vacancy with id <" + vacancyId + "> not found"));
-        var respond = documentRepository.findByVacancyAndId(vacancy, respondId).orElseThrow(() -> new NoSuchElementException("respond with id <" + respondId + "> not found"));
+    @GetMapping("/api/v1/respond/{respondId}")
+    public ResponseEntity<EmploymentDocResponseDto> getVacancyRespond(@PathVariable("respondId") Long respondId) {
+//        var vacancy = vacancyRepository.findById(vacancyId).orElseThrow(() -> new NoSuchElementException("vacancy with id <" + vacancyId + "> not found"));
+        var respond = documentRepository.findById(respondId).orElseThrow(() -> new NoSuchElementException("respond with id <" + respondId + "> not found"));
         return ResponseEntity.ok(EmploymentDocResponseDto.builder()
                 .id(respond.getId())
                 .vacancyName(respond.getVacancy().getVacancyName())
@@ -55,16 +55,16 @@ public class EmploymentManagementController {
                 .build());
     }
 
-    @DeleteMapping("/api/v1/vacancy/{vacancyId}/responds/{respondId}")
-    public ResponseEntity<Void> deleteVacancyRespond(@PathVariable("vacancyId") Long vacancyId, @PathVariable("respondId") Long respondId) {
+    @DeleteMapping("/api/v1/respond/{respondId}")
+    public ResponseEntity<Void> deleteVacancyRespond(@PathVariable("respondId") Long respondId) {
         documentRepository.deleteById(respondId);
         return ResponseEntity.noContent().build();
     }
 
-    @PutMapping("/api/v1/vacancy/{vacancyId}/responds/{respondId}/status")
-    public ResponseEntity<EmploymentDocResponseDto> changeRespondStatus(@PathVariable("vacancyId") Long vacancyId, @PathVariable("respondId") Long respondId, @RequestBody StatusWrapper status) {
-        var vacancy = vacancyRepository.findById(vacancyId).orElseThrow(() -> new NoSuchElementException("vacancy with id <" + vacancyId + "> not found"));
-        var respond = documentRepository.findByVacancyAndId(vacancy, respondId).orElseThrow(() -> new NoSuchElementException("respond with id <" + respondId + "> not found"));
+    @PutMapping("/api/v1/respond/{respondId}/status")
+    public ResponseEntity<EmploymentDocResponseDto> changeRespondStatus(@PathVariable("respondId") Long respondId, @RequestBody StatusWrapper status) {
+//        var vacancy = vacancyRepository.findById(vacancyId).orElseThrow(() -> new NoSuchElementException("vacancy with id <" + vacancyId + "> not found"));
+        var respond = documentRepository.findById(respondId).orElseThrow(() -> new NoSuchElementException("respond with id <" + respondId + "> not found"));
         respond.setStatus(status.getStatus());
         documentRepository.save(respond);
         return ResponseEntity.ok(EmploymentDocResponseDto.builder()
@@ -78,10 +78,10 @@ public class EmploymentManagementController {
                 .build());
     }
 
-    @PutMapping("/api/v1/vacancy/{vacancyId}/responds/{respondId}/recipient")
-    public ResponseEntity<EmploymentDocResponseDto> changeRespondRecipient(@PathVariable("vacancyId") Long vacancyId, @PathVariable("respondId") Long respondId, @RequestBody RoleWrapper recipient) {
-        var vacancy = vacancyRepository.findById(vacancyId).orElseThrow(() -> new NoSuchElementException("vacancy with id <" + vacancyId + "> not found"));
-        var respond = documentRepository.findByVacancyAndId(vacancy, respondId).orElseThrow(() -> new NoSuchElementException("respond with id <" + respondId + "> not found"));
+    @PutMapping("/api/v1/respond/{respondId}/recipient")
+    public ResponseEntity<EmploymentDocResponseDto> changeRespondRecipient(@PathVariable("respondId") Long respondId, @RequestBody RoleWrapper recipient) {
+//        var vacancy = vacancyRepository.findById(vacancyId).orElseThrow(() -> new NoSuchElementException("vacancy with id <" + vacancyId + "> not found"));
+        var respond = documentRepository.findById(respondId).orElseThrow(() -> new NoSuchElementException("respond with id <" + respondId + "> not found"));
         respond.setRecipient(recipient.getRecipient());
         documentRepository.save(respond);
         return ResponseEntity.ok(EmploymentDocResponseDto.builder()
