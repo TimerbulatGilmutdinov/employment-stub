@@ -52,6 +52,7 @@ public class EmploymentManagementController {
                 .responseDate(respond.getResponseDate())
                 .recipient(respond.getRecipient())
                 .userData(respond.getUser())
+                .educations(educationRepository.findAllByUserData(respond.getUser()))
                 .build());
     }
 
