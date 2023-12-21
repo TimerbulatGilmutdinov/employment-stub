@@ -16,7 +16,7 @@ public class AddResumeRequestDto {
     protected String lastname;
     protected String middlename;
     protected String email;
-    protected String phoneNumber;
+    protected String phone;
     protected Sex sex;
     protected String citizenship;
     protected LocalDate birthday;
