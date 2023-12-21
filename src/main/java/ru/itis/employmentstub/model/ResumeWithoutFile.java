@@ -12,13 +12,5 @@ import java.time.LocalDate;
 @Setter
 public class ResumeWithoutFile {
     private Long id;
-    protected String firstname;
-    protected String lastname;
-    protected String middlename;
-    protected String email;
-    protected String phoneNumber;
-    protected Sex sex;
-    protected String citizenship;
-    protected LocalDate birthday;
-    private Long resumeFileId;
+    private BaseUserData userData;
 }

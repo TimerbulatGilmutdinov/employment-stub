@@ -4,6 +4,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import ru.itis.employmentstub.model.BaseUserData;
 import ru.itis.employmentstub.model.Resume;
 import ru.itis.employmentstub.model.ResumeFile;
 
@@ -50,15 +51,16 @@ public class ResumeController {
         var res = resumeRepository.getResumeWithoutFile(id).orElseThrow(() -> new NoSuchElementException("Resume with id <" + id + "> not found"));
         return ResponseEntity.ok(ResumeWithoutFile.builder()
                 .id(res.getId())
-                .firstname(res.getFirstname())
-                .lastname(res.getLastname())
-                .middlename(res.getMiddlename())
-                .email(res.getEmail())
-                .phoneNumber(res.getPhoneNumber())
-                .sex(res.getSex())
-                .citizenship(res.getCitizenship())
-                .birthday(res.getBirthday())
-                .resumeFileId(res.getResumeFile().getId())
+                .userData(BaseUserData.builder()
+                        .firstname(res.getFirstname())
+                        .lastname(res.getLastname())
+                        .middlename(res.getMiddlename())
+                        .email(res.getEmail())
+                        .phoneNumber(res.getPhoneNumber())
+                        .sex(res.getSex())
+                        .citizenship(res.getCitizenship())
+                        .birthday(res.getBirthday())
+                        .build())
                 .build());
     }
 }
