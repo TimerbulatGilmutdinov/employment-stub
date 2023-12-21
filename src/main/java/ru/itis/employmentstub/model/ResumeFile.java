@@ -16,6 +16,4 @@ public class ResumeFile {
     private String name;
     private String contentType;
     private byte[] bytes;
-    @OneToOne(mappedBy = "resumeFile")
-    private Resume resume;
 }
