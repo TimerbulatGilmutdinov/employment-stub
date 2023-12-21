@@ -11,5 +11,5 @@ import java.util.Optional;
 public interface DocumentRepository extends JpaRepository<EmploymentDocument,Long> {
     List<EmploymentDocument> findAllByUser(UserDB userDB);
     List<EmploymentDocument> findAllByVacancy(Vacancy vacancy);
-    Optional<EmploymentDocument> findByVacancyAndId(Vacancy vacancy,Long id);
+    Optional<EmploymentDocument> findById(Long id);
 }
