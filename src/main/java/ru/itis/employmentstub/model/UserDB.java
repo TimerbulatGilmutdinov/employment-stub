@@ -20,7 +20,7 @@ public class UserDB {
     protected String lastname;
     protected String middlename;
     protected String email;
-    protected String phoneNumber;
+    protected String phone;
     @Enumerated(EnumType.STRING)
     protected Sex sex;
     protected String citizenship;

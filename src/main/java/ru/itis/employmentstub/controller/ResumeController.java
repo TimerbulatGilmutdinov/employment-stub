@@ -56,7 +56,7 @@ public class ResumeController {
                         .lastname(res.getLastname())
                         .middlename(res.getMiddlename())
                         .email(res.getEmail())
-                        .phoneNumber(res.getPhoneNumber())
+                        .phone(res.getPhoneNumber())
                         .sex(res.getSex())
                         .citizenship(res.getCitizenship())
                         .birthday(res.getBirthday())
