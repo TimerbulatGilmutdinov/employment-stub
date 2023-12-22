@@ -21,7 +21,7 @@ public class ResumeController {
     private final ResumeRepository resumeRepository;
 
     @PostMapping(value = "/api/v1/resume", consumes = {MediaType.MULTIPART_FORM_DATA_VALUE})
-    public ResponseEntity<Void> addResume(@ModelAttribute AddResumeRequestDto resumeRequestDto) throws IOException {
+    public ResponseEntity<Long> addResume(@ModelAttribute AddResumeRequestDto resumeRequestDto) throws IOException {
         var resume = Resume.builder()
                 .firstname(resumeRequestDto.getFirstname())
                 .lastname(resumeRequestDto.getLastname())
@@ -37,7 +37,7 @@ public class ResumeController {
                         .name(resumeRequestDto.getResumeFile().getOriginalFilename())
                         .build()).build();
         var r = resumeRepository.save(resume);
-        return ResponseEntity.ok().build();
+        return ResponseEntity.ok(r.getId());
     }
 
     @DeleteMapping("/api/v1/resume/{id}")
